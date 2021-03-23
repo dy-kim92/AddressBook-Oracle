@@ -6,6 +6,7 @@ import java.util.List;
 
 public class AddressService implements AddressDao {
 
+	//	공통
 	private Connection getConnection() throws SQLException{
 		Connection conn = null;
 		try {
@@ -19,6 +20,7 @@ public class AddressService implements AddressDao {
 		return conn;
 	}
 
+	//	리스트
 	@Override
 	public List<AddressVo> getList() {
 		List<AddressVo> list = new ArrayList<>();
@@ -30,7 +32,7 @@ public class AddressService implements AddressDao {
 			conn = getConnection();
 			stmt = conn.createStatement();
 			
-			String sql = "SELECT id, name, hp, tel FROM phone_book";
+			String sql = "SELECT id, name, hp, tel FROM phone_book ORDER BY id";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -56,6 +58,7 @@ public class AddressService implements AddressDao {
 		return list;
 	}
 
+	//	검색
 	@Override
 	public List<AddressVo> search(String keyword) {
 		List<AddressVo> list = new ArrayList<>();
@@ -94,12 +97,7 @@ public class AddressService implements AddressDao {
 		return list;
 	}
 
-	@Override
-	public AddressVo get(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	// 등록
 	@Override
 	public boolean insert(AddressVo vo) {
 		Connection conn = null;
@@ -130,6 +128,7 @@ public class AddressService implements AddressDao {
 		return insertCount == 1;
 	}
 
+	//	삭제
 	@Override
 	public boolean delete(Long id) {
 		Connection conn = null;

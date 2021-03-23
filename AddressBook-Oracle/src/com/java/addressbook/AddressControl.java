@@ -47,9 +47,7 @@ public class AddressControl{
 			}
 			
 		}
-		
 		avt.endPrint();
-		
 	}
 
 	//	리스트 출력
