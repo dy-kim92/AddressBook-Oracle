@@ -39,6 +39,7 @@ public class AddressControl{
 				searchAddress();
 				break;
 			case 5:
+				//	5 입력받으면 EndFlag = false 로 변경하여 while문 탈출
 				endFlag = false;
 				break;
 				
@@ -47,6 +48,7 @@ public class AddressControl{
 			}
 			
 		}
+		//	종료메세지
 		avt.endPrint();
 	}
 
@@ -108,6 +110,8 @@ public class AddressControl{
 		Iterator<AddressVo> it = list.iterator();
 		
 		while(it.hasNext()) {
+			//	Service - search 에서 걸러져서 List 에 담겨있는 vo 를 순차적으로 빼낸다
+			//	빼낸 vo 에서 id, name, hp, tel 추출하여 출력
 			AddressVo vo = it.next();
 			System.out.printf("%d.\t %s\t %s\t %s\n", 
 					vo.getId(), vo.getName(), vo.getHp(), vo.getTel());
